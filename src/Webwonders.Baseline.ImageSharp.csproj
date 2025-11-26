@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <StaticWebAssetBasePath>/</StaticWebAssetBasePath>
@@ -14,9 +14,9 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="[16.0.0,17.0.0)" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="[17.0.0,18.0.0)" />
     <PackageReference Include="SixLabors.ImageSharp" Version="3.1.11" />
-    <PackageReference Include="Umbraco.Cms.Imaging.ImageSharp" Version="[16.0.0,17.0.0)" />
+    <PackageReference Include="Umbraco.Cms.Imaging.ImageSharp" Version="[17.0.0,18.0.0)" />
     <PackageReference Include="SixLabors.ImageSharp.Web" Version="3.2.0" />
   </ItemGroup>
 
