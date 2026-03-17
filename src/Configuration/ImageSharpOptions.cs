@@ -30,8 +30,8 @@ public class ImageSharpOptions : IComposer
                 if (!isWebp && imageCommandContext.Context.Request.GetTypedHeaders().Accept.Any(aValue => aValue.MediaType.Value == "image/webp"))
                 {
                     if (!imageCommandContext.Commands.Contains("webp")
-                        || !imageCommandContext.Commands.Contains("noformat")
-                        && path.EndsWith("png") || path.EndsWith("jpg") || path.EndsWith("jpeg"))
+                        && !imageCommandContext.Commands.Contains("noformat")
+                        && (path.EndsWith("png") || path.EndsWith("jpg") || path.EndsWith("jpeg")))
                     {
                         imageCommandContext.Commands.Remove("format");
                         imageCommandContext.Commands.Add("format", "webp");
