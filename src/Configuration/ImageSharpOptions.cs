@@ -27,10 +27,13 @@ public class ImageSharpOptions : IComposer
                 var path = imageCommandContext.Context.Request.Path.ToString();
                 isWebp = path.EndsWith("webp");
 
+                var noFormat = imageCommandContext.Context.Request.Query.ContainsKey("noformat")
+                    || (imageCommandContext.Context.Request.Query.TryGetValue("format", out var fv) && fv == "noformat");
+
                 if (!isWebp && imageCommandContext.Context.Request.GetTypedHeaders().Accept.Any(aValue => aValue.MediaType.Value == "image/webp"))
                 {
                     if (!imageCommandContext.Commands.Contains("webp")
-                        && !imageCommandContext.Commands.Contains("noformat")
+                        && !noFormat
                         && (path.EndsWith("png") || path.EndsWith("jpg") || path.EndsWith("jpeg")))
                     {
                         imageCommandContext.Commands.Remove("format");
@@ -58,7 +61,7 @@ public class ImageSharpOptions : IComposer
                 }
 
 
-                bool doesntWantFormat = isWebp || imageCommandContext.Commands.TryGetValue("noformat", out string? value) || excludeItem;
+                bool doesntWantFormat = isWebp || noFormat || excludeItem;
 
                 if (doesntWantFormat)
                 {
